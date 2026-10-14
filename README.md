@@ -1,5 +1,7 @@
 # Payroll System — AI Rewrite Experiment
 
+[![CI](https://github.com/JLtheCoder/payroll-system-2019/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/JLtheCoder/payroll-system-2019/actions/workflows/ci.yml)
+
 This repository is a personal experiment: using an **AI coding agent** to rewrite
 an old, hand-written code sample from **2019** into modern **TypeScript**.
 

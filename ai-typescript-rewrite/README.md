@@ -1,5 +1,7 @@
 # Payroll System — TypeScript
 
+[![CI](https://github.com/JLtheCoder/payroll-system-2019/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/JLtheCoder/payroll-system-2019/actions/workflows/ci.yml)
+
 A TypeScript rewrite of the [2019 hand-written payroll system](../2019-hand-written),
 with modern libraries and tooling. It accepts time-report CSVs, archives the raw
 timekeeping data, and generates a biweekly payroll report that can be viewed
