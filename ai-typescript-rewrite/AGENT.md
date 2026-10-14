@@ -115,6 +115,10 @@ prisma/schema.prisma      data models; prisma/migrations/ = schema history
   `npm run db:migrate -w @payroll/server` (dev) or `npm run db:deploy -w
 @payroll/server` (apply committed migrations). Prisma 7 does not auto-run
   `generate` after migrations.
+- **`npm test` and workspaces:** the root `test` script uses `--if-present`
+  because the `e2e` workspace intentionally has no `test` script (Playwright runs
+  via `npm run test:e2e`). npm 10 (used by CI) errors on a missing workspace
+  script; npm 11 happens to skip it, so `--if-present` is required for parity.
 - **E2E tests:** need `npm run e2e:install` once, and port `8081` must be free
   (`reuseExistingServer: false`). They run against `server/prisma/e2e.db`, never
   `dev.db`. Guide: `e2e/README.md`.

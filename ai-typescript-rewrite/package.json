@@ -17,7 +17,7 @@
     "dev:client": "npm run dev -w @payroll/client",
     "build": "npm run typecheck -w @payroll/server && npm run build -w @payroll/client",
     "start": "npm run start -w @payroll/server",
-    "test": "npm run test --workspaces",
+    "test": "npm run test --workspaces --if-present",
     "test:integration": "npm run test:integration -w @payroll/server",
     "test:e2e": "npm run test:e2e -w @payroll/e2e",
     "e2e:install": "npm run install:browsers -w @payroll/e2e",
