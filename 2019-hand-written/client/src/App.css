@@ -1,0 +1,17 @@
+.app {
+  text-align: center;
+}
+
+.main {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 500px;
+}
+
+.report-button {
+  margin: 10px 0;
+}
+
+.payroll-button {
+ margin-bottom: 10px; 
+}

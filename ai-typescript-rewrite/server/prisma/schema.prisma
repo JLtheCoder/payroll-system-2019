@@ -1,0 +1,64 @@
+// Prisma schema for the payroll system.
+//
+// Prisma 7 (Rust-free client):
+//   - generator provider is `prisma-client` and `output` is required
+//   - the datasource URL lives in `prisma.config.ts`, not here
+//   - a driver adapter is required at runtime (see src/data/prisma.ts)
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  // To use Postgres: set provider = "postgresql" and swap the driver adapter
+  // in src/data/prisma.ts for `@prisma/adapter-pg`.
+  provider = "sqlite"
+}
+
+/// Record of a single uploaded time report. `csv_report_id` is unique so that
+/// duplicate uploads can be detected.
+model ReportUpload {
+  id           Int      @id @default(autoincrement())
+  csvReportId  String   @unique @map("csv_report_id")
+  createdDate  DateTime @default(now()) @map("created_date")
+  modifiedDate DateTime @updatedAt @map("modified_date")
+
+  payrollData PayrollData[]
+  reportData  ReportData[]
+
+  @@map("report_upload")
+}
+
+/// Raw timekeeping data parsed from every uploaded report. Kept for archival
+/// purposes, exactly as required by the challenge brief.
+model PayrollData {
+  id             Int      @id @default(autoincrement())
+  reportUploadId Int      @map("report_upload_id")
+  payDate        String   @map("pay_date")
+  hoursWorked    Float    @map("hours_worked")
+  employeeId     Int      @map("employee_id")
+  jobGroup       String   @map("job_group")
+  createdDate    DateTime @default(now()) @map("created_date")
+  modifiedDate   DateTime @updatedAt @map("modified_date")
+
+  reportUpload ReportUpload @relation(fields: [reportUploadId], references: [id])
+
+  @@map("payroll_data")
+}
+
+/// The generated payroll report, cached so it can be served without re-parsing
+/// the CSV files again.
+model ReportData {
+  id             Int      @id @default(autoincrement())
+  reportUploadId Int      @map("report_upload_id")
+  employeeId     Int      @map("employee_id")
+  payPeriod      String   @map("pay_period")
+  amountPaid     Float    @map("amount_paid")
+  createdDate    DateTime @default(now()) @map("created_date")
+  modifiedDate   DateTime @updatedAt @map("modified_date")
+
+  reportUpload ReportUpload @relation(fields: [reportUploadId], references: [id])
+
+  @@map("report_data")
+}

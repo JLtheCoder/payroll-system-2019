@@ -1,0 +1,19 @@
+{
+  "name": "@payroll/e2e",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser end-to-end tests (Playwright) for the payroll system.",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "typecheck": "tsc --noEmit",
+    "install:browsers": "playwright install chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}

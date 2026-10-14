@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+.env
+*.log
+.DS_Store
+server/prisma/*.db
+server/prisma/*.db-journal
+server/src/generated/
+test-results/
+playwright-report/
+blob-report/

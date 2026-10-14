@@ -1,0 +1,14 @@
+[
+  {
+    "pay_date": "1/11/2016",
+    "hours_worked": 1,
+    "employee_id": 1,
+    "job_group": "A"
+  },
+  {
+    "pay_date": "15/11/2016",
+    "hours_worked": 1,
+    "employee_id": 1,
+    "job_group": "A"
+  }
+]
