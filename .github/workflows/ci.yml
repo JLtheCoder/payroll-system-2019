@@ -1,10 +1,9 @@
 name: CI
 
 # Triggered on pushes to the default branches and on every pull request, but
-# only when the rewrite or these workflow files change. The untouched
-# 2019-hand-written/ reference folder is intentionally excluded, so changes
-# there don't spin up CI. `.github/workflows/**` is included so workflow edits
-# (like this one) also trigger a run.
+# only when the rewrite or these workflow files change (the untouched
+# 2019-hand-written/ reference folder is intentionally excluded). It can also
+# be started manually from the Actions tab via the "Run workflow" button.
 on:
   push:
     branches: [master, main]
@@ -15,6 +14,7 @@ on:
     paths:
       - 'ai-typescript-rewrite/**'
       - '.github/workflows/**'
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}
