@@ -1,5 +1,10 @@
 name: CI
 
+# Triggered on pushes to the default branches and on every pull request, but
+# only when the rewrite or these workflow files change. The untouched
+# 2019-hand-written/ reference folder is intentionally excluded, so changes
+# there don't spin up CI. `.github/workflows/**` is included so workflow edits
+# (like this one) also trigger a run.
 on:
   push:
     branches: [master, main]
